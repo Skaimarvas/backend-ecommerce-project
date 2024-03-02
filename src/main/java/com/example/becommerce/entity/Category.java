@@ -1,8 +1,12 @@
 package com.example.becommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Data
@@ -24,5 +28,8 @@ public class Category {
     @Column(name = "gender")
     private String gender;
 
-    
+    @JsonManagedReference
+    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
+
 }
