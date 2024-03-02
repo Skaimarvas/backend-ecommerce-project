@@ -28,7 +28,7 @@ public class User {
     @JsonBackReference
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "role_id")
-    private Roles role;
+    private Roles roles;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

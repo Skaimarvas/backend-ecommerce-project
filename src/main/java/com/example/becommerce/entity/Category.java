@@ -29,7 +29,7 @@ public class Category {
     private String gender;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
 
 }
