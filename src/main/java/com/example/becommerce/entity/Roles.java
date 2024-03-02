@@ -1,7 +1,7 @@
 package com.example.becommerce.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +11,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "roles", schema = "becommerce")
 public class Roles {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "name")
+    @NotNull
     private String name;
+
+    @Column(name = "code")
+    @NotNull
     private String code;
 
 }
