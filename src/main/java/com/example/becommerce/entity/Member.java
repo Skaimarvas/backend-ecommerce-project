@@ -12,34 +12,35 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "user", schema = "becommerce")
-public class User {
+@Table(name = "member", schema = "becommerce")
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "email")
     private String email;
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @JsonBackReference
+    @JsonManagedReference
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "role_id")
     private Roles roles;
 
+
     @JsonManagedReference
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Card> cards = new ArrayList<>();
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Store> stores = new ArrayList<>();
 
 }
